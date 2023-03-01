@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>348</width>
+    <height>275</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Курсы ЦБ</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="maximumSize">
+    <size>
+     <width>800</width>
+     <height>800</height>
+    </size>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QHBoxLayout" name="main_rate_layout">
+      <item>
+       <widget class="QLabel" name="constant_label_0">
+        <property name="text">
+         <string>Ключевая ставка</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="main_rate">
+        <property name="text">
+         <string>main_rate</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="other_rates_layout">
+      <item>
+       <layout class="QHBoxLayout" name="titles_layout">
+        <item>
+         <widget class="QLabel" name="constant_label_1">
+          <property name="text">
+           <string>Курсы валют</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="previous_date">
+          <property name="text">
+           <string>previous_date</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="current_date">
+          <property name="text">
+           <string>current_date</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="usd_layout">
+        <item>
+         <widget class="QLabel" name="constant_label_2">
+          <property name="text">
+           <string>USD</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="previous_usd">
+          <property name="text">
+           <string>previous_usd</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="current_usd">
+          <property name="text">
+           <string>current_usd</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="eur_layout">
+        <item>
+         <widget class="QLabel" name="constant_label_3">
+          <property name="text">
+           <string>EUR</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="previous_eur">
+          <property name="text">
+           <string>previous_eur</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="current_eur">
+          <property name="text">
+           <string>current_eur</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="cny_layout">
+        <item>
+         <widget class="QLabel" name="constant_label_4">
+          <property name="text">
+           <string>CNY</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="previous_cny">
+          <property name="text">
+           <string>previous_cny</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="current_cny">
+          <property name="text">
+           <string>current_cny</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
