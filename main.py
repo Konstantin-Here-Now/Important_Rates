@@ -35,6 +35,9 @@ class TaskBarIcon(wx.adv.TaskBarIcon):
         self.SetIcon(icon, TRAY_TOOLTIP)
 
     def on_left_down(self, event):
+        """
+        Not a static method.
+        """
         get_ui.main(DATA)
 
     # def on_hello(self, event):

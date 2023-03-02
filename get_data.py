@@ -2,21 +2,33 @@ import requests
 from bs4 import BeautifulSoup
 
 URL = 'https://cbr.ru'
+request = requests.get(URL)
+soup = BeautifulSoup(request.text, 'html.parser')
+
+
+def soup_find_and_get_text(div_class: str, position: int):
+    # instead of repeating lines like soup.find_all("div", {'class': "main-indicator_value"})[2].text.rstrip()
+    return soup.find_all("div", {'class': div_class})[position].text.rstrip()
 
 
 def main():
-    data = dict()
-    request = requests.get(URL)
-    soup = BeautifulSoup(request.text, 'html.parser')
+    # creating dict, which once contains keys and sources, then received values instead sources
+    data = dict(
+        {
+            # key : sources for function soup_find_and_get_text
+            'main_rate': ("main-indicator_value", 2),
+            'previous_date': ("col-md-2 col-xs-7 _right", 0),
+            'current_date': ("col-md-2 col-xs-7 _right", 1),
+            'previous_usd': ("col-md-2 col-xs-9 _right mono-num", 0),
+            'current_usd': ("col-md-2 col-xs-9 _right mono-num", 1),
+            'previous_eur': ("col-md-2 col-xs-9 _right mono-num", 2),
+            'current_eur': ("col-md-2 col-xs-9 _right mono-num", 3),
+            'previous_cny': ("col-md-2 col-xs-9 _right mono-num", 4),
+            'current_cny': ("col-md-2 col-xs-9 _right mono-num", 5)
+        }
+    )
 
-    data['main_rate'] = soup.find_all("div", {'class': "main-indicator_value"})[2].text.rstrip()
-    data['previous_date'] = soup.find_all("div", {'class': "col-md-2 col-xs-7 _right"})[0].text
-    data['current_date'] = soup.find_all("div", {'class': "col-md-2 col-xs-7 _right"})[1].text
-    data['previous_usd'] = soup.find_all("div", {'class': "col-md-2 col-xs-9 _right mono-num"})[0].text.rstrip()
-    data['current_usd'] = soup.find_all("div", {'class': "col-md-2 col-xs-9 _right mono-num"})[1].text.rstrip()
-    data['previous_eur'] = soup.find_all("div", {'class': "col-md-2 col-xs-9 _right mono-num"})[2].text.rstrip()
-    data['current_eur'] = soup.find_all("div", {'class': "col-md-2 col-xs-9 _right mono-num"})[3].text.rstrip()
-    data['previous_cny'] = soup.find_all("div", {'class': "col-md-2 col-xs-9 _right mono-num"})[4].text.rstrip()
-    data['current_cny'] = soup.find_all("div", {'class': "col-md-2 col-xs-9 _right mono-num"})[5].text.rstrip()
+    for key in data.keys():
+        data[key] = soup_find_and_get_text(*data[key])
 
     return data

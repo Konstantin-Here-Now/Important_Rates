@@ -9,15 +9,13 @@ class App(QtWidgets.QMainWindow, cb_ui.Ui_MainWindow):
         self.setupUi(self)
 
     def set_values(self, data: dict):
-        self.main_rate.setText(data['main_rate'])
-        self.previous_date.setText(data['previous_date'])
-        self.current_date.setText(data['current_date'])
-        self.current_usd.setText(data['current_usd'])
-        self.current_eur.setText(data['current_eur'])
-        self.current_cny.setText(data['current_cny'])
-        self.previous_usd.setText(data['previous_usd'])
-        self.previous_eur.setText(data['previous_eur'])
-        self.previous_cny.setText(data['previous_cny'])
+        """
+        Not a static method.
+        :param data: dict
+        :return: None
+        """
+        for key in data.keys():
+            exec(f'self.{key}.setText(data["{key}"])')
 
     def set_styles(self):
         self.setStyleSheet(
