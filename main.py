@@ -5,7 +5,7 @@ import get_data
 import get_ui
 
 TRAY_TOOLTIP = 'Курсы ЦБ'
-TRAY_ICON = 'assets/logo.png'
+TRAY_ICON = 'assets/cb_logo.png'
 DATA = get_data.main()
 
 

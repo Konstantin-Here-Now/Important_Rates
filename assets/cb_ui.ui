@@ -6,18 +6,28 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>348</width>
-    <height>275</height>
+    <width>500</width>
+    <height>400</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>400</height>
+   </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>800</width>
-    <height>800</height>
+    <width>500</width>
+    <height>400</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>Курсы ЦБ</string>
+   <string>Rates</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>cb_logo.png</normaloff>cb_logo.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="maximumSize">
@@ -26,131 +36,701 @@
      <height>800</height>
     </size>
    </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>16</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(92, 7, 162);
+font: 16pt &quot;Times New Roman&quot;;</string>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <layout class="QHBoxLayout" name="main_rate_layout">
-      <item>
-       <widget class="QLabel" name="constant_label_0">
-        <property name="text">
-         <string>Ключевая ставка</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="main_rate">
-        <property name="text">
-         <string>main_rate</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QWidget" name="main_rate_widget" native="true">
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:repeat, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(189, 31, 81, 255), stop:1 rgba(141, 11, 80, 255));
+border-radius: 20px;
+font: bold;</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="constant_label_0">
+         <property name="font">
+          <font>
+           <family>Times New Roman</family>
+           <pointsize>16</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="lineWidth">
+          <number>1</number>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Ключевая ставка ЦБ</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="main_rate">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="lineWidth">
+          <number>1</number>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>main_rate</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="other_rates_layout">
-      <item>
-       <layout class="QHBoxLayout" name="titles_layout">
-        <item>
-         <widget class="QLabel" name="constant_label_1">
-          <property name="text">
-           <string>Курсы валют</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="previous_date">
-          <property name="text">
-           <string>previous_date</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="current_date">
-          <property name="text">
-           <string>current_date</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="usd_layout">
-        <item>
-         <widget class="QLabel" name="constant_label_2">
-          <property name="text">
-           <string>USD</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="previous_usd">
-          <property name="text">
-           <string>previous_usd</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="current_usd">
-          <property name="text">
-           <string>current_usd</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="eur_layout">
-        <item>
-         <widget class="QLabel" name="constant_label_3">
-          <property name="text">
-           <string>EUR</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="previous_eur">
-          <property name="text">
-           <string>previous_eur</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="current_eur">
-          <property name="text">
-           <string>current_eur</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="cny_layout">
-        <item>
-         <widget class="QLabel" name="constant_label_4">
-          <property name="text">
-           <string>CNY</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="previous_cny">
-          <property name="text">
-           <string>previous_cny</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="current_cny">
-          <property name="text">
-           <string>current_cny</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
+     <widget class="QWidget" name="other_rates_widget" native="true">
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:repeat, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(189, 31, 81, 255), stop:1 rgba(141, 11, 80, 255));
+border-radius: 20px;</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <layout class="QVBoxLayout" name="column_1">
+         <item>
+          <widget class="QLabel" name="constant_label_1">
+           <property name="font">
+            <font>
+             <family>Times New Roman</family>
+             <pointsize>16</pointsize>
+             <weight>75</weight>
+             <italic>false</italic>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;
+font: bold;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <property name="text">
+            <string>ЦБ РФ</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="constant_label_2">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <property name="text">
+            <string>USD</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="constant_label_3">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <property name="text">
+            <string>EUR</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="constant_label_4">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <property name="text">
+            <string>CNY</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="column_2">
+         <item>
+          <widget class="QLabel" name="previous_date">
+           <property name="font">
+            <font>
+             <family>Times New Roman</family>
+             <pointsize>16</pointsize>
+             <weight>75</weight>
+             <italic>false</italic>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;
+font: bold;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <property name="text">
+            <string>previous_date</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="previous_usd">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <property name="text">
+            <string>previous_usd</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="previous_eur">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <property name="text">
+            <string>previous_eur</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="previous_cny">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <property name="text">
+            <string>previous_cny</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="column_3">
+         <item>
+          <widget class="QLabel" name="current_date">
+           <property name="font">
+            <font>
+             <family>Times New Roman</family>
+             <pointsize>16</pointsize>
+             <weight>75</weight>
+             <italic>false</italic>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;
+font: bold;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <property name="text">
+            <string>current_date</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="current_usd">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <property name="text">
+            <string>current_usd</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="current_eur">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <property name="text">
+            <string>current_eur</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="current_cny">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <property name="text">
+            <string>current_cny</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>50</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QWidget" name="moex_widget" native="true">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>16</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:repeat, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(15, 93, 54, 255), stop:1 rgba(9, 104, 8, 255));
+border-radius: 20px;</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLabel" name="constant_logo_label">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;
+font: bold;</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>moex_logo.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="textInteractionFlags">
+            <set>Qt::LinksAccessibleByMouse</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="moex_update_btn">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: bold;
+	background-color: rgb(0, 120, 0);
+	color: rgb(211, 211, 211);
+	border-style: outset;
+    border-radius: 10px;
+}
+QPushButton:hover {
+	font: bold;
+	background-color: rgb(0, 150, 0);
+	color: rgb(211, 211, 211);
+	border-style: outset;
+    border-radius: 10px;
+}
+QPushButton:pressed {
+	font: bold;
+	background-color: rgb(0, 180, 0);
+	color: rgb(211, 211, 211);
+	border-style: outset;
+    border-radius: 10px;
+}</string>
+           </property>
+           <property name="text">
+            <string>Обновить</string>
+           </property>
+           <property name="default">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="moex_rates_layout">
+         <item>
+          <layout class="QHBoxLayout" name="usd_layout_moex">
+           <item>
+            <widget class="QLabel" name="contant_label_6">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+             <property name="lineWidth">
+              <number>1</number>
+             </property>
+             <property name="midLineWidth">
+              <number>0</number>
+             </property>
+             <property name="text">
+              <string>USD</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="moex_usd">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+             <property name="lineWidth">
+              <number>1</number>
+             </property>
+             <property name="midLineWidth">
+              <number>0</number>
+             </property>
+             <property name="text">
+              <string>moex_usd</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="eur_layout_moex">
+           <item>
+            <widget class="QLabel" name="contant_label_7">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+             <property name="lineWidth">
+              <number>1</number>
+             </property>
+             <property name="midLineWidth">
+              <number>0</number>
+             </property>
+             <property name="text">
+              <string>EUR</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="moex_eur">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(211, 211, 211);
+border-radius: 20px;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+             <property name="lineWidth">
+              <number>1</number>
+             </property>
+             <property name="midLineWidth">
+              <number>0</number>
+             </property>
+             <property name="text">
+              <string>moex_eur</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
     </item>
    </layout>
   </widget>

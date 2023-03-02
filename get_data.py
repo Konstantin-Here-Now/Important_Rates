@@ -11,6 +11,14 @@ def soup_find_and_get_text(div_class: str, position: int):
     return soup.find_all("div", {'class': div_class})[position].text.rstrip()
 
 
+def get_MOEX_data(data: dict):
+    pass
+
+
+def get_cb_data(data: dict):
+    pass
+
+
 def main():
     # creating dict, which once contains keys and sources, then received values instead sources
     data = dict(

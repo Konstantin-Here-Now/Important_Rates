@@ -14,21 +14,14 @@ class App(QtWidgets.QMainWindow, cb_ui.Ui_MainWindow):
         :param data: dict
         :return: None
         """
+        ruble_symbol = '₽'
         for key in data.keys():
             exec(f'self.{key}.setText(data["{key}"])')
-
-    def set_styles(self):
-        self.setStyleSheet(
-            """
-            font-size: 18px;
-            """
-        )
 
 
 def main(data):
     app = QtWidgets.QApplication(sys.argv)
     window = App()
     window.set_values(data)  # setting got DATA
-    window.set_styles()  # setting general styles
     window.show()
     app.exec()
