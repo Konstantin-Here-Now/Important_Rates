@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
-from scrapingant_client import ScrapingAntClient
+from selenium.webdriver.common.by import By
+from selenium import webdriver
 
 
 def soup_find_and_get_text(soup: BeautifulSoup, div_class: str, position: int):
@@ -12,32 +13,28 @@ def get_moex_data(data):
     # Define URL with a dynamic web content
     usd_url = "https://www.moex.com/ru/issue/USD000UTSTOM/CETS"
     eur_url = "https://www.moex.com/ru/issue/EUR_RUB__TOM/CETS"
-    # Create a ScrapingAntClient instance
-    client = ScrapingAntClient(token='efc9f455d10c40c79cd922533a11ce9e')
-    # Get the HTML page rendered content
-    usd_page_content = client.general_request(usd_url).content
-    eur_page_content = client.general_request(eur_url).content
-    # Parse content with BeautifulSoup
-    usd_soup = BeautifulSoup(usd_page_content, features="lxml")
-    eur_soup = BeautifulSoup(eur_page_content, features="lxml")
-    moex_usd = usd_soup.find("li", {"class": "last", "title": "Курс последней сделки"}).text
-    moex_eur = eur_soup.find("li", {"class": "last", "title": "Курс последней сделки"}).text
+
+    # Setting web driver and making it invisible (no window)
+    driver = webdriver.Firefox()
+    options = webdriver.FirefoxOptions()
+    options.headless = True
+
+    # Getting data (and accepting cookies)
+    driver.get(usd_url)
+    driver.find_element(By.LINK_TEXT, 'Согласен').click()
+    moex_usd = driver.find_element(By.CLASS_NAME, 'last').text
+    driver.delete_all_cookies()
+    driver.get(eur_url)
+    driver.find_element(By.LINK_TEXT, 'Согласен').click()
+    moex_eur = driver.find_element(By.CLASS_NAME, 'last').text
+    driver.quit()
+
     data['moex_usd'] = moex_usd
     data['moex_eur'] = moex_eur
     return data
 
 
-def get_cb_data(data: dict):
-    cb_url = 'https://cbr.ru'
-    request = requests.get(cb_url)
-    cb_soup = BeautifulSoup(request.text, 'html.parser')
-    for key in data.keys():
-        data[key] = soup_find_and_get_text(cb_soup, *data[key])
-    return data
-
-
-def main():
-    # creating dict, which once contains keys and sources, then received values instead sources
+def get_cb_data():
     data = dict(
         {
             # key : sources for function soup_find_and_get_text
@@ -52,8 +49,18 @@ def main():
             'current_cny': ("col-md-2 col-xs-9 _right mono-num", 5)
         }
     )
+    cb_url = 'https://cbr.ru'
+    request = requests.get(cb_url)
+    cb_soup = BeautifulSoup(request.text, 'html.parser')
+    for key in data.keys():
+        data[key] = soup_find_and_get_text(cb_soup, *data[key])
+    return data
 
-    data = get_cb_data(data)
+
+def main():
+    # creating dict, which once contains keys and sources, then received values instead sources
+
+    data = get_cb_data()
     data = get_moex_data(data)
 
     return data
