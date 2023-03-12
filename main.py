@@ -1,12 +1,11 @@
 import wx
-import wx.adv
+from wx.adv import TaskBarIcon, EVT_TASKBAR_LEFT_DOWN
 
-import get_data
-import get_ui
+from get_data import RatesDataObj
+from get_ui import main as get_ui
 
 TRAY_TOOLTIP = 'Курсы ЦБ'
 TRAY_ICON = 'assets/cb_logo.png'
-DATA = get_data.main()
 
 
 def create_menu_item(menu, label, func):
@@ -16,16 +15,16 @@ def create_menu_item(menu, label, func):
     return item
 
 
-class TaskBarIcon(wx.adv.TaskBarIcon):
+class OurTaskBarIcon(TaskBarIcon):
     def __init__(self, frame):
         self.frame = frame
-        super(TaskBarIcon, self).__init__()
+        super(OurTaskBarIcon, self).__init__()
         self.set_icon(TRAY_ICON)
-        self.Bind(wx.adv.EVT_TASKBAR_LEFT_DOWN, self.on_left_down)
+        self.Bind(EVT_TASKBAR_LEFT_DOWN, self.on_left_down)
 
     def CreatePopupMenu(self):
         menu = wx.Menu()
-        # create_menu_item(menu, 'Say Hello', self.on_hello)
+        # create_menu_item(menu, 'Menu Function', self.some_menu_func)
         # menu.AppendSeparator()
         create_menu_item(menu, 'Закрыть', self.on_exit)
         return menu
@@ -38,10 +37,10 @@ class TaskBarIcon(wx.adv.TaskBarIcon):
         """
         Not a static method.
         """
-        get_ui.main(DATA)
+        get_ui(data)
 
-    # def on_hello(self, event):
-    #     print('Hello, world!')
+    # def some_menu_func(self, event):
+    #     print('I am some menu function!')
 
     def on_exit(self, event):
         wx.CallAfter(self.Destroy)
@@ -52,7 +51,7 @@ class App(wx.App):
     def OnInit(self):
         frame = wx.Frame(None)
         self.SetTopWindow(frame)
-        TaskBarIcon(frame)
+        OurTaskBarIcon(frame)
         return True
 
 
@@ -62,4 +61,5 @@ def main():
 
 
 if __name__ == '__main__':
+    data = RatesDataObj.data_dict
     main()
