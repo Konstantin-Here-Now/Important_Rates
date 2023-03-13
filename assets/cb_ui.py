@@ -28,17 +28,15 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.centralwidget.setFont(font)
         self.centralwidget.setAutoFillBackground(False)
-        self.centralwidget.setStyleSheet("background-color: rgb(92, 7, 162);\n"
+        self.centralwidget.setStyleSheet("background-color: rgb(29, 29, 29);\n"
                                          "font: 16pt \"Times New Roman\";")
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.main_rate_widget = QtWidgets.QWidget(parent=self.centralwidget)
-        self.main_rate_widget.setStyleSheet(
-            "background-color: qlineargradient(spread:repeat, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(189, 31, 81, 255), "
-            "stop:1 rgba(141, 11, 80, 255));\n"
-            "border-radius: 20px;\n"
-            "font: bold;")
+        self.main_rate_widget.setStyleSheet("background-color: rgb(60, 60, 60);\n"
+                                            "border-radius: 20px;\n"
+                                            "font: bold;")
         self.main_rate_widget.setObjectName("main_rate_widget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.main_rate_widget)
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -52,7 +50,7 @@ class Ui_MainWindow(object):
         self.constant_label_0.setFont(font)
         self.constant_label_0.setAutoFillBackground(False)
         self.constant_label_0.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
-                                            "color: rgb(211, 211, 211);\n"
+                                            "color: rgb(255, 255, 255);\n"
                                             "border-radius: 20px;")
         self.constant_label_0.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.constant_label_0.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
@@ -64,7 +62,7 @@ class Ui_MainWindow(object):
         self.main_rate = QtWidgets.QLabel(parent=self.main_rate_widget)
         self.main_rate.setAutoFillBackground(False)
         self.main_rate.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
-                                     "color: rgb(211, 211, 211);\n"
+                                     "color: rgb(255, 255, 255);\n"
                                      "border-radius: 20px;")
         self.main_rate.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.main_rate.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
@@ -75,10 +73,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.main_rate)
         self.verticalLayout_2.addWidget(self.main_rate_widget)
         self.other_rates_widget = QtWidgets.QWidget(parent=self.centralwidget)
-        self.other_rates_widget.setStyleSheet(
-            "background-color: qlineargradient(spread:repeat, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(189, 31, 81, 255), "
-            "stop:1 rgba(141, 11, 80, 255));\n"
-            "border-radius: 20px;")
+        self.other_rates_widget.setStyleSheet("background-color: rgb(60, 60, 60);\n"
+                                              "border-radius: 20px;")
         self.other_rates_widget.setObjectName("other_rates_widget")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.other_rates_widget)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
@@ -93,7 +89,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.constant_label_1.setFont(font)
         self.constant_label_1.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
-                                            "color: rgb(211, 211, 211);\n"
+                                            "color: rgb(255, 255, 255);\n"
                                             "border-radius: 20px;\n"
                                             "font: bold;")
         self.constant_label_1.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
@@ -148,7 +144,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.previous_date.setFont(font)
         self.previous_date.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
-                                         "color: rgb(211, 211, 211);\n"
+                                         "color: rgb(255, 255, 255);\n"
                                          "border-radius: 20px;\n"
                                          "font: bold;")
         self.previous_date.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
@@ -203,7 +199,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.current_date.setFont(font)
         self.current_date.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
-                                        "color: rgb(211, 211, 211);\n"
+                                        "color: rgb(255, 255, 255);\n"
                                         "border-radius: 20px;\n"
                                         "font: bold;")
         self.current_date.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
@@ -259,10 +255,8 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(50)
         self.moex_widget.setFont(font)
-        self.moex_widget.setStyleSheet(
-            "background-color: qlineargradient(spread:repeat, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(15, 93, 54, 255), "
-            "stop:1 rgba(9, 104, 8, 255));\n"
-            "border-radius: 20px;")
+        self.moex_widget.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+                                       "border-radius: 20px;")
         self.moex_widget.setObjectName("moex_widget")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.moex_widget)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
@@ -284,22 +278,22 @@ class Ui_MainWindow(object):
         self.moex_update_btn.setMinimumSize(QtCore.QSize(0, 0))
         self.moex_update_btn.setStyleSheet("QPushButton {\n"
                                            "    font: bold;\n"
-                                           "    background-color: rgb(0, 120, 0);\n"
-                                           "    color: rgb(211, 211, 211);\n"
+                                           "    background-color: rgb(90, 115, 205);\n"
+                                           "    color: rgb(255, 255, 255);\n"
                                            "    border-style: outset;\n"
                                            "    border-radius: 10px;\n"
                                            "}\n"
                                            "QPushButton:hover {\n"
                                            "    font: bold;\n"
-                                           "    background-color: rgb(0, 150, 0);\n"
-                                           "    color: rgb(211, 211, 211);\n"
+                                           "    background-color: rgb(112, 145, 255);\n"
+                                           "    color: rgb(255, 255, 255);\n"
                                            "    border-style: outset;\n"
                                            "    border-radius: 10px;\n"
                                            "}\n"
                                            "QPushButton:pressed {\n"
                                            "    font: bold;\n"
-                                           "    background-color: rgb(0, 180, 0);\n"
-                                           "    color: rgb(211, 211, 211);\n"
+                                           "    background-color: rgb(54, 69, 205);\n"
+                                           "    color: rgb(255, 255, 255);\n"
                                            "    border-style: outset;\n"
                                            "    border-radius: 10px;\n"
                                            "}")
@@ -312,8 +306,9 @@ class Ui_MainWindow(object):
         self.usd_layout_moex = QtWidgets.QHBoxLayout()
         self.usd_layout_moex.setObjectName("usd_layout_moex")
         self.contant_label_6 = QtWidgets.QLabel(parent=self.moex_widget)
-        self.contant_label_6.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
-                                           "color: rgb(211, 211, 211);\n"
+        self.contant_label_6.setStyleSheet("font: bold;\n"
+                                           "background-color: rgba(255, 255, 255, 0);\n"
+                                           "color: rgb(255, 255, 255);\n"
                                            "border-radius: 20px;")
         self.contant_label_6.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.contant_label_6.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
@@ -324,7 +319,7 @@ class Ui_MainWindow(object):
         self.usd_layout_moex.addWidget(self.contant_label_6)
         self.moex_usd = QtWidgets.QLabel(parent=self.moex_widget)
         self.moex_usd.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
-                                    "color: rgb(211, 211, 211);\n"
+                                    "color: rgb(255, 255, 255);\n"
                                     "border-radius: 20px;")
         self.moex_usd.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.moex_usd.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
@@ -337,8 +332,9 @@ class Ui_MainWindow(object):
         self.eur_layout_moex = QtWidgets.QHBoxLayout()
         self.eur_layout_moex.setObjectName("eur_layout_moex")
         self.contant_label_7 = QtWidgets.QLabel(parent=self.moex_widget)
-        self.contant_label_7.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
-                                           "color: rgb(211, 211, 211);\n"
+        self.contant_label_7.setStyleSheet("font: bold;\n"
+                                           "background-color: rgba(255, 255, 255, 0);\n"
+                                           "color: rgb(255, 255, 255);\n"
                                            "border-radius: 20px;")
         self.contant_label_7.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.contant_label_7.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
@@ -349,7 +345,7 @@ class Ui_MainWindow(object):
         self.eur_layout_moex.addWidget(self.contant_label_7)
         self.moex_eur = QtWidgets.QLabel(parent=self.moex_widget)
         self.moex_eur.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
-                                    "color: rgb(211, 211, 211);\n"
+                                    "color: rgb(255, 255, 255);\n"
                                     "border-radius: 20px;")
         self.moex_eur.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.moex_eur.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)

@@ -41,7 +41,7 @@ class RatesData:
         options = webdriver.FirefoxOptions()
         options.headless = True
         driver = webdriver.Firefox(options=options)
-        driver.delete_all_cookies()
+        driver.switch_to.default_content()
 
         # Getting data (and accepting cookies)
         driver.get(USD_URL)
