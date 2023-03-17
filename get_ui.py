@@ -2,8 +2,11 @@ from sys import argv
 
 from PyQt6 import QtWidgets
 
+import app_logger
 from assets import cb_ui
 from get_data import RatesDataObj
+
+logger = app_logger.get_logger(' ui ')
 
 
 class App(QtWidgets.QMainWindow, cb_ui.Ui_MainWindow):
@@ -17,21 +20,26 @@ class App(QtWidgets.QMainWindow, cb_ui.Ui_MainWindow):
         :param data: dict
         :return: None
         """
-        ruble_symbol = '₽'
+        logger.info('Setting data...')
         for key in data.keys():
             exec(f'self.{key}.setText(data["{key}"])')
+        logger.info('Data set.')
 
     def update_moex_data(self):
+        logger.info('Updating MOEX data...')
         RatesDataObj.get_moex_data()
         data = RatesDataObj.data_dict
         self.moex_usd.setText(data['moex_usd'])
         self.moex_eur.setText(data['moex_eur'])
+        logger.info('Updated MOEX data.')
 
 
 def main(data):
+    logger.info('Showing window...')
     app = QtWidgets.QApplication(argv)  # argv = sys.argv
     window = App()
     window.set_values(data)  # setting got DATA
     window.moex_update_btn.clicked.connect(window.update_moex_data)  # connecting button to function
     window.show()
+    logger.info('Window shown.')
     app.exec()

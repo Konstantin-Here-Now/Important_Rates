@@ -1,11 +1,14 @@
 import wx
 from wx.adv import TaskBarIcon, EVT_TASKBAR_LEFT_DOWN
 
+import app_logger
 from get_data import RatesDataObj
 from get_ui import main as get_ui
 
 TRAY_TOOLTIP = 'Курсы ЦБ'
 TRAY_ICON = 'assets/cb_logo.png'
+
+logger = app_logger.get_logger('main')
 
 
 def create_menu_item(menu, label, func):
@@ -43,6 +46,7 @@ class OurTaskBarIcon(TaskBarIcon):
     #     print('I am some menu function!')
 
     def on_exit(self, event):
+        logger.info('App manually closed.')
         wx.CallAfter(self.Destroy)
         self.frame.Close()
 
@@ -57,9 +61,11 @@ class App(wx.App):
 
 def main():
     app = App(False)
+    logger.info('App ready to use.')
     app.MainLoop()
 
 
 if __name__ == '__main__':
     data = RatesDataObj.data_dict
+    logger.info('Got data for further use.')
     main()
