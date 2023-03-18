@@ -2,8 +2,10 @@ from requests import get as requests_get
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 from selenium import webdriver
+from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from subprocess import CREATE_NO_WINDOW
 
 import app_logger
 
@@ -52,7 +54,9 @@ class RatesData:
         # Setting web driver and making it invisible (no window)
         options = webdriver.FirefoxOptions()
         options.headless = True
-        driver = webdriver.Firefox(options=options)
+        service = Service(executable_path='logs/geckodriver.exe', log_path='logs/geckodriver.log')
+        service.creation_flags = CREATE_NO_WINDOW
+        driver = webdriver.Firefox(options=options, service=service)
         logger.info('      Firefox started.')
         driver.switch_to.default_content()
 

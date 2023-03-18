@@ -1,0 +1,16 @@
+[INFO] - 2023-03-19 00:01:10,232 - data : App starts.
+[INFO] - 2023-03-19 00:01:10,232 - data : Collecting all data...
+[INFO] - 2023-03-19 00:01:10,232 - data :    Collecting Central bank data...
+[INFO] - 2023-03-19 00:01:10,331 - data :    Got Central bank data.
+[INFO] - 2023-03-19 00:01:10,331 - data :    Collecting MOEX data...
+[INFO] - 2023-03-19 00:01:12,191 - data :       Firefox started.
+[INFO] - 2023-03-19 00:01:13,293 - data :       Got MOEX-usd data.
+[INFO] - 2023-03-19 00:01:14,791 - data :       Got MOEX-eur data.
+[INFO] - 2023-03-19 00:01:15,243 - data :    Got MOEX data.
+[INFO] - 2023-03-19 00:01:19,268 - main : Got data for further use.
+[INFO] - 2023-03-19 00:01:19,327 - main : App ready to use.
+[INFO] - 2023-03-19 00:01:48,464 -  ui  : Showing window...
+[INFO] - 2023-03-19 00:01:48,523 -  ui  : Setting data...
+[INFO] - 2023-03-19 00:01:48,523 -  ui  : Data set.
+[INFO] - 2023-03-19 00:01:48,570 -  ui  : Window shown.
+[INFO] - 2023-03-19 00:01:50,949 - main : App manually closed.
