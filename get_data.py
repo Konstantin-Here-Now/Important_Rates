@@ -50,7 +50,11 @@ class RatesData:
 
     def get_moex_data(self):
         logger.info('   Collecting MOEX data...')
+
         ruble_symbol = '₽'
+        moex_usd = 'NO DATA'
+        moex_eur = 'NO DATA'
+
         # Setting web driver and making it invisible (no window)
         options = webdriver.FirefoxOptions()
         options.headless = True
@@ -63,6 +67,7 @@ class RatesData:
         # Getting data (and accepting cookies)
         try:
             waiting = WebDriverWait(driver=driver, timeout=5)
+
             driver.get(USD_URL)
             waiting.until(EC.presence_of_element_located((By.LINK_TEXT, 'Согласен'))).click()
             moex_usd = waiting.until(EC.presence_of_element_located((By.CLASS_NAME, 'last'))).text
@@ -70,16 +75,13 @@ class RatesData:
             driver.get(EUR_URL)
             moex_eur = waiting.until(EC.presence_of_element_located((By.CLASS_NAME, 'last'))).text
             logger.info('      Got MOEX-eur data.')
-            driver.delete_all_cookies()
             driver.quit()
-
+        except Exception as e:
+            logger.error('!!!!!Something went wrong.')
+            logger.error(e)
+        finally:
             self.data_dict['moex_usd'] = moex_usd + ' ' + ruble_symbol
             self.data_dict['moex_eur'] = moex_eur + ' ' + ruble_symbol
-        except Exception as e:
-            logger.error(e)
-            self.data_dict['moex_usd'] = 'NO DATA'
-            self.data_dict['moex_eur'] = 'NO DATA'
-        finally:
             logger.info('   Got MOEX data.')
 
 
