@@ -33,6 +33,8 @@ class RatesData:
             'current_cny': ("col-md-2 col-xs-9 _right mono-num", 5)
         }
         self.get_cb_data()
+
+        self.driver = self.get_browser()
         self.get_moex_data()
 
     @staticmethod
@@ -48,6 +50,23 @@ class RatesData:
             self.data_dict[key] = self.soup_find_and_get_text(cb_soup, *self.data_dict[key])
         logger.info('   Got Central bank data.')
 
+    @staticmethod
+    def get_browser():
+        # Setting web driver and making it invisible (no window)
+        try:
+            options = webdriver.FirefoxOptions()
+            options.headless = True
+            service = Service(executable_path='logs/geckodriver.exe', log_path='logs/geckodriver.log')
+            service.creation_flags = CREATE_NO_WINDOW
+            driver = webdriver.Firefox(options=options, service=service)
+            logger.info('      Firefox started.')
+            driver.switch_to.default_content()
+        except Exception as e:
+            driver = 'NO DRIVER'
+            logger.error('!!!!!No Firefox in System.')
+            logger.error(e)
+        return driver
+
     def get_moex_data(self):
         logger.info('   Collecting MOEX data...')
 
@@ -55,27 +74,18 @@ class RatesData:
         moex_usd = 'NO DATA'
         moex_eur = 'NO DATA'
 
-        # Setting web driver and making it invisible (no window)
-        options = webdriver.FirefoxOptions()
-        options.headless = True
-        service = Service(executable_path='logs/geckodriver.exe', log_path='logs/geckodriver.log')
-        service.creation_flags = CREATE_NO_WINDOW
-        driver = webdriver.Firefox(options=options, service=service)
-        logger.info('      Firefox started.')
-        driver.switch_to.default_content()
-
         # Getting data (and accepting cookies)
         try:
-            waiting = WebDriverWait(driver=driver, timeout=5)
+            waiting = WebDriverWait(driver=self.driver, timeout=5)
 
-            driver.get(USD_URL)
+            self.driver.get(USD_URL)
             waiting.until(EC.presence_of_element_located((By.LINK_TEXT, 'Согласен'))).click()
             moex_usd = waiting.until(EC.presence_of_element_located((By.CLASS_NAME, 'last'))).text
             logger.info('      Got MOEX-usd data.')
-            driver.get(EUR_URL)
+            self.driver.get(EUR_URL)
             moex_eur = waiting.until(EC.presence_of_element_located((By.CLASS_NAME, 'last'))).text
             logger.info('      Got MOEX-eur data.')
-            driver.quit()
+            self.driver.quit()
         except Exception as e:
             logger.error('!!!!!Something went wrong.')
             logger.error(e)
