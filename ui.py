@@ -4,7 +4,7 @@ from PyQt6 import QtWidgets
 
 import app_logger
 from assets import cb_ui
-from get_data import RatesDataObj
+from dataset import RatesDataset
 
 logger = app_logger.get_logger(' ui ')
 
@@ -27,14 +27,14 @@ class App(QtWidgets.QMainWindow, cb_ui.Ui_MainWindow):
 
     def update_moex_data(self):
         logger.info('Updating MOEX data...')
-        RatesDataObj.get_moex_data()
-        data = RatesDataObj.data_dict
+        RatesDataset.get_moex_data()
+        data = RatesDataset.data_dict
         self.moex_usd.setText(data['moex_usd'])
         self.moex_eur.setText(data['moex_eur'])
         logger.info('Updated MOEX data.')
 
 
-def main(data):
+def get_ui(data):
     logger.info('Showing window...')
     app = QtWidgets.QApplication(argv)  # argv = sys.argv
     window = App()

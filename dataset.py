@@ -95,4 +95,4 @@ class RatesData:
             logger.info('   Got MOEX data.')
 
 
-RatesDataObj = RatesData()
+RatesDataset = RatesData()

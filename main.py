@@ -2,8 +2,8 @@ import wx
 from wx.adv import TaskBarIcon, EVT_TASKBAR_LEFT_DOWN
 
 import app_logger
-from get_data import RatesDataObj
-from get_ui import main as get_ui
+from dataset import RatesDataset
+from ui import get_ui
 
 TRAY_TOOLTIP = 'Курсы ЦБ'
 TRAY_ICON = 'assets/cb_logo.png'
@@ -66,6 +66,6 @@ def main():
 
 
 if __name__ == '__main__':
-    data = RatesDataObj.data_dict
+    data = RatesDataset.data_dict
     logger.info('Got data for further use.')
     main()
