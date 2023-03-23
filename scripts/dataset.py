@@ -56,7 +56,7 @@ class RatesData:
         try:
             options = webdriver.FirefoxOptions()
             options.headless = True
-            service = Service(executable_path='logs/geckodriver.exe', log_path='logs/geckodriver.log')
+            service = Service(executable_path='logs/geckodriver.exe', log_path='../logs/geckodriver.log')
             service.creation_flags = CREATE_NO_WINDOW
             driver = webdriver.Firefox(options=options, service=service)
             logger.info('      Firefox started.')
