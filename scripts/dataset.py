@@ -1,19 +1,31 @@
-from requests import get as requests_get
+# from subprocess import CREATE_NO_WINDOW
+
 from bs4 import BeautifulSoup
-from selenium.webdriver.common.by import By
+from requests import get as requests_get
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from subprocess import CREATE_NO_WINDOW
 
 import app_logger
+from scripts.get_cb_data import get_key_rate
+from scripts.singleton import Singleton
 
 CB_URL = 'https://cbr.ru'
 USD_URL = "https://www.moex.com/ru/issue/USD000UTSTOM/CETS"
 EUR_URL = "https://www.moex.com/ru/issue/EUR_RUB__TOM/CETS"
 
 logger = app_logger.get_logger('data')
+
+
+class Dataset(metaclass=Singleton):
+    def __init__(self, key_rate, cb_usd, cb_eur, moex_usd, moex_eur):
+        self.key_rate = key_rate
+        self.cb_usd = cb_usd
+        self.cb_eur = cb_eur
+        self.moex_usd = moex_usd
+        self.moex_eur = moex_eur
 
 
 class RatesData:
