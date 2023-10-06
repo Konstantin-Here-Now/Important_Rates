@@ -8,28 +8,32 @@ class RatesDataset(metaclass=Singleton):
         self.key_rate = ""
         self.current_cb_usd = ""
         self.current_cb_eur = ""
+        self.current_cb_cny = ""
         self.previous_cb_usd = ""
         self.previous_cb_eur = ""
+        self.previous_cb_cny = ""
         self.moex_usd = ""
         self.moex_eur = ""
         self.latest_date = ""
         self.previous_date = ""
+
         self.update()
 
-    def update(self):
+    def update(self) -> None:
         cb_curses = get_necessary_cb_curses()
-        self.key_rate = get_key_rate()
-        self.current_cb_usd = cb_curses["current"][0]
-        self.current_cb_eur = cb_curses["current"][1]
-        self.previous_cb_usd = cb_curses["previous"][0]
-        self.previous_cb_eur = cb_curses["previous"][1]
-        self.moex_usd = get_moex_usd()
-        self.moex_eur = get_moex_eur()
+        self.key_rate = get_key_rate() + ' ' + '%'
+        self.current_cb_usd = cb_curses["current"][0] + ' ' + '₽'
+        self.current_cb_eur = cb_curses["current"][1] + ' ' + '₽'
+        self.current_cb_cny = cb_curses["current"][2] + ' ' + '₽'
+        self.previous_cb_usd = cb_curses["previous"][0] + ' ' + '₽'
+        self.previous_cb_eur = cb_curses["previous"][1] + ' ' + '₽'
+        self.previous_cb_cny = cb_curses["previous"][2] + ' ' + '₽'
+        self.moex_usd = get_moex_usd() + ' ' + '₽'
+        self.moex_eur = get_moex_eur() + ' ' + '₽'
         self.latest_date = get_latest_date()
         self.previous_date = get_previous_date(self.latest_date)
 
-    def get_ui_packed_data(self):
-
+    def get_ui_packed_data(self) -> dict[str, str]:
         ui_data = {
             'main_rate': self.key_rate,
             'previous_date': self.previous_date,
@@ -38,9 +42,10 @@ class RatesDataset(metaclass=Singleton):
             'current_usd': self.current_cb_usd,
             'previous_eur': self.previous_cb_eur,
             'current_eur': self.current_cb_eur,
-            'previous_cny': "---",
-            'current_cny': "---",
+            'previous_cny': self.previous_cb_cny,
+            'current_cny': self.current_cb_cny,
             'moex_usd': self.moex_usd,
             'moex_eur': self.moex_eur
         }
+
         return ui_data

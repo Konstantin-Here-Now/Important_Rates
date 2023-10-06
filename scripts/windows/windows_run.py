@@ -2,7 +2,7 @@ import wx
 from wx.adv import TaskBarIcon, EVT_TASKBAR_LEFT_DOWN
 
 from scripts import app_logger
-from scripts.windows.windows_dataset import RatesDataset
+from scripts.rates_dataset import RatesDataset
 from scripts.ui import get_ui
 
 TRAY_TOOLTIP = 'Курсы ЦБ'
@@ -66,6 +66,6 @@ def windows_main():
 
 
 if __name__ == '__main__':
-    data = RatesDataset.data_dict
+    data = RatesDataset().get_ui_packed_data()
     logger.info('Got data for further use.')
     windows_main()

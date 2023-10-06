@@ -76,19 +76,20 @@ def get_curs_on_date(iso_date: str = date.today().isoformat()) -> dict[str, dict
     return output_dict
 
 
-# necessary_cb_curses are current_cb_usd, current_cb_eur, previous_cb_usd, previous_cb_eur
-def get_necessary_cb_curses() -> dict[str, tuple[str, str]]:
+# necessary_cb_curses are current_cb_usd, current_cb_eur, current_cny, previous_cb_usd, previous_cb_eur, previous_cny
+def get_necessary_cb_curses() -> dict[str, tuple[str, str, str]]:
     latest_date = get_latest_date()
     previous_date = get_previous_date(latest_date)
     current_curses = get_curs_on_date(latest_date)
     previous_curses = get_curs_on_date(previous_date)
 
-    current_usd, current_eur = get_cb_usd(current_curses), get_cb_eur(current_curses)
-    previous_usd, previous_eur = get_cb_usd(previous_curses), get_cb_eur(previous_curses)
+    current_usd, previous_usd = get_cb_usd(current_curses), get_cb_usd(previous_curses)
+    current_eur, previous_eur = get_cb_eur(current_curses), get_cb_eur(previous_curses)
+    current_cny, previous_cny = get_cb_cny(current_curses), get_cb_cny(previous_curses)
 
     curses_dict = {
-        "current": (current_usd, current_eur),
-        "previous": (previous_usd, previous_eur)
+        "current": (current_usd, current_eur, current_cny),
+        "previous": (previous_usd, previous_eur, previous_cny)
     }
 
     return curses_dict
@@ -102,3 +103,8 @@ def get_cb_usd(curses: dict[str, dict[str, str]]) -> str:
 def get_cb_eur(curses: dict[str, dict[str, str]]) -> str:
     cb_eur = curses["Евро"]["Vcurs"]
     return cb_eur
+
+
+def get_cb_cny(curses: dict[str, dict[str, str]]) -> str:
+    cb_cny = curses["Китайский юань"]["Vcurs"]
+    return cb_cny
