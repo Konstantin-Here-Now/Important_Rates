@@ -1,4 +1,4 @@
-# from subprocess import CREATE_NO_WINDOW
+from subprocess import CREATE_NO_WINDOW
 
 from bs4 import BeautifulSoup
 from requests import get as requests_get
@@ -8,24 +8,13 @@ from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-import app_logger
-from scripts.get_cb_data import get_key_rate
-from scripts.singleton import Singleton
+from scripts import app_logger
 
 CB_URL = 'https://cbr.ru'
 USD_URL = "https://www.moex.com/ru/issue/USD000UTSTOM/CETS"
 EUR_URL = "https://www.moex.com/ru/issue/EUR_RUB__TOM/CETS"
 
 logger = app_logger.get_logger('data')
-
-
-class Dataset(metaclass=Singleton):
-    def __init__(self, key_rate, cb_usd, cb_eur, moex_usd, moex_eur):
-        self.key_rate = key_rate
-        self.cb_usd = cb_usd
-        self.cb_eur = cb_eur
-        self.moex_usd = moex_usd
-        self.moex_eur = moex_eur
 
 
 class RatesData:
@@ -68,7 +57,7 @@ class RatesData:
         try:
             options = webdriver.FirefoxOptions()
             options.headless = True
-            service = Service(executable_path='logs/geckodriver.exe', log_path='../logs/geckodriver.log')
+            service = Service(executable_path='logs/geckodriver.exe', log_path='../../logs/geckodriver.log')
             service.creation_flags = CREATE_NO_WINDOW
             driver = webdriver.Firefox(options=options, service=service)
             logger.info('      Firefox started.')

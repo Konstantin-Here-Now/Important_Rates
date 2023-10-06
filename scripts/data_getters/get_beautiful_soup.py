@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Callable, Any, Sequence
+from typing import Any, Sequence
 
 import bs4
 import requests

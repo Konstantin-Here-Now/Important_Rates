@@ -1,5 +1,4 @@
-from get_beautiful_soup import get_soup
-from scripts.get_beautiful_soup import HttpMethod
+from scripts.data_getters.get_beautiful_soup import get_soup, HttpMethod
 
 
 def get_moex_usd() -> str:
@@ -16,4 +15,3 @@ def get_moex_eur() -> str:
     moex_eur = soup.find_all("rows")[1].find_all_next("row")[1]['LAST']
 
     return moex_eur
-
