@@ -4,6 +4,7 @@ from wx.adv import TaskBarIcon, EVT_TASKBAR_LEFT_DOWN
 from scripts import app_logger
 from scripts.rates_dataset import RatesDataset
 from scripts.ui import get_ui
+from scripts.window.window_show import show_window
 
 TRAY_TOOLTIP = 'Курсы ЦБ'
 TRAY_ICON = 'assets/cb_logo.png'
@@ -40,7 +41,7 @@ class OurTaskBarIcon(TaskBarIcon):
         """
         Not a static method.
         """
-        get_ui(data)
+        show_window(dataset)
 
     # def some_menu_func(self, event):
     #     print('I am some menu function!')
@@ -66,6 +67,6 @@ def windows_main():
 
 
 if __name__ == '__main__':
-    data = RatesDataset().get_ui_packed_data()
+    dataset = RatesDataset()
     logger.info('Got data for further use.')
     windows_main()
