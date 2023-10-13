@@ -1,3 +1,4 @@
+import asyncio
 from sys import argv
 
 from PyQt6 import QtWidgets
@@ -32,7 +33,7 @@ class App(QtWidgets.QMainWindow, cb_ui.Ui_MainWindow):
 
     def update_data(self):
         logger.info('Updating data...')
-        RatesDataset().update()
+        asyncio.run(RatesDataset().update())
         data = RatesDataset().get_ui_packed_data()
         self.set_values(data)
         logger.info('Updated data.')

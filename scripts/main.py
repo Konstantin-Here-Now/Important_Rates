@@ -15,7 +15,8 @@ def main():
         try:
             from scripts.window.window_show import show_window
             show_window()
-        except Exception:
+        except Exception as ex:
+            logger.warning(ex)
             logger.warning("Platform cannot run Qt Windows. Running in console...")
             from scripts.console.console_run import console_main
             console_main()

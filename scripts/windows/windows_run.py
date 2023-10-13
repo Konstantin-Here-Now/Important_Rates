@@ -3,7 +3,6 @@ from wx.adv import TaskBarIcon, EVT_TASKBAR_LEFT_DOWN
 
 from scripts import app_logger
 from scripts.rates_dataset import RatesDataset
-from scripts.ui import get_ui
 from scripts.window.window_show import show_window
 
 TRAY_TOOLTIP = 'Курсы ЦБ'
