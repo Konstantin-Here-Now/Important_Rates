@@ -1,71 +1,26 @@
-import wx
-from wx.adv import TaskBarIcon, EVT_TASKBAR_LEFT_DOWN
+from scripts import settings
+from scripts import app_logger
 
-import app_logger
-from dataset import RatesDataset
-from ui import get_ui
-
-TRAY_TOOLTIP = 'Курсы ЦБ'
-TRAY_ICON = 'assets/cb_logo.png'
-
-logger = app_logger.get_logger('main')
-
-
-def create_menu_item(menu, label, func):
-    item = wx.MenuItem(menu, -1, label)
-    menu.Bind(wx.EVT_MENU, func, id=item.GetId())
-    menu.Append(item)
-    return item
-
-
-class OurTaskBarIcon(TaskBarIcon):
-    def __init__(self, frame):
-        self.frame = frame
-        super(OurTaskBarIcon, self).__init__()
-        self.set_icon(TRAY_ICON)
-        self.Bind(EVT_TASKBAR_LEFT_DOWN, self.on_left_down)
-
-    def CreatePopupMenu(self):
-        menu = wx.Menu()
-        # create_menu_item(menu, 'Menu Function', self.some_menu_func)
-        # menu.AppendSeparator()
-        create_menu_item(menu, 'Закрыть', self.on_exit)
-        return menu
-
-    def set_icon(self, path):
-        icon = wx.Icon(wx.Bitmap(path))
-        self.SetIcon(icon, TRAY_TOOLTIP)
-
-    def on_left_down(self, event):
-        """
-        Not a static method.
-        """
-        get_ui(data)
-
-    # def some_menu_func(self, event):
-    #     print('I am some menu function!')
-
-    def on_exit(self, event):
-        logger.info('App manually closed.')
-        wx.CallAfter(self.Destroy)
-        self.frame.Close()
-
-
-class App(wx.App):
-    def OnInit(self):
-        frame = wx.Frame(None)
-        self.SetTopWindow(frame)
-        OurTaskBarIcon(frame)
-        return True
+logger = app_logger.get_logger('rates_dataset')
 
 
 def main():
-    app = App(False)
-    logger.info('App ready to use.')
-    app.MainLoop()
+    if settings.PLATFORM == "Console":
+        from scripts.console.console_run import console_main
+        console_main()
+    elif settings.PLATFORM == "Windows":
+        from scripts.windows.windows_run import windows_main
+        windows_main()
+    else:
+        try:
+            from scripts.window.window_show import show_window
+            show_window()
+        except Exception as ex:
+            logger.warning(ex)
+            logger.warning("Platform cannot run Qt Windows. Running in console...")
+            from scripts.console.console_run import console_main
+            console_main()
 
 
 if __name__ == '__main__':
-    data = RatesDataset.data_dict
-    logger.info('Got data for further use.')
     main()
