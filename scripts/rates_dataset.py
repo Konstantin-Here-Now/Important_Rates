@@ -39,10 +39,10 @@ class RatesDataset(metaclass=Singleton):
             self.__init__()
 
     async def _get_cb_data_key_rate(self):
-        self.key_rate = get_key_rate() + '' + '%'
+        self.key_rate = await get_key_rate() + '' + '%'
 
     async def _get_cb_data_curses(self):
-        cb_curses = get_necessary_cb_curses()
+        cb_curses = await get_necessary_cb_curses()
         self.current_cb_usd = cb_curses["current"][0] + ' ' + '₽'
         self.current_cb_eur = cb_curses["current"][1] + ' ' + '₽'
         self.current_cb_cny = cb_curses["current"][2] + ' ' + '₽'
@@ -51,13 +51,13 @@ class RatesDataset(metaclass=Singleton):
         self.previous_cb_cny = cb_curses["previous"][2] + ' ' + '₽'
 
     async def _get_moex_usd(self):
-        self.moex_usd = get_moex_usd() + ' ' + '₽'
+        self.moex_usd = await get_moex_usd() + ' ' + '₽'
 
     async def _get_moex_eur(self):
-        self.moex_eur = get_moex_eur() + ' ' + '₽'
+        self.moex_eur = await get_moex_eur() + ' ' + '₽'
 
     async def _get_dates(self):
-        self.latest_date = get_latest_date()
+        self.latest_date = await get_latest_date()
         self.previous_date = get_previous_date(self.latest_date)
 
     def get_ui_packed_data(self) -> dict[str, str]:

@@ -60,6 +60,7 @@ In the `config.yaml` you can see configs for this project.
 
 - [Python](https://www.python.org/)
 - [Qt (PyQt)](https://www.qt.io/)
+- [aiohttp](https://docs.aiohttp.org/en/stable/)
 
 ## File structure
 
@@ -67,4 +68,10 @@ Coming soon...
 
 ## Testing
 
-Coming soon...
+Make sure you have installed `pytest` package (it is also stated in `requirements.txt`).
+
+To run all the tests use:
+
+```bash
+pytest -v
+```
