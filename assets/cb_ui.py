@@ -9,8 +9,8 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 from scripts import settings
 
-CB_LOGO_PATH = str(settings.BASE_DIR) + "/assets/cb_logo.ico"
-MOEX_LOGO_PATH = str(settings.BASE_DIR) + "/assets/moex_logo.png"
+CB_LOGO_PATH = settings.BASE_DIR + "/assets/cb_logo.ico"
+MOEX_LOGO_PATH = settings.BASE_DIR + "/assets/moex_logo.png"
 
 
 class Ui_MainWindow(object):

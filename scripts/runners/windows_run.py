@@ -7,7 +7,7 @@ from scripts.window_show import show_window
 
 
 TRAY_TOOLTIP = 'Курсы ЦБ'
-TRAY_ICON = str(settings.BASE_DIR) + r'\assets\cb_logo.ico'
+TRAY_ICON = settings.BASE_DIR + r'\assets\cb_logo.ico'
 
 logger = app_logger.get_logger('windows_run')
 
