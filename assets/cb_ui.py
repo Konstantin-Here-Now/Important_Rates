@@ -7,6 +7,10 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from scripts import settings
+
+CB_LOGO_PATH = str(settings.BASE_DIR) + "/assets/cb_logo.ico"
+MOEX_LOGO_PATH = str(settings.BASE_DIR) + "/assets/moex_logo.png"
 
 
 class Ui_MainWindow(object):
@@ -16,7 +20,7 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QtCore.QSize(500, 400))
         MainWindow.setMaximumSize(QtCore.QSize(500, 400))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("assets/cb_logo.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap(CB_LOGO_PATH), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setMaximumSize(QtCore.QSize(800, 800))
@@ -268,7 +272,7 @@ class Ui_MainWindow(object):
                                                "border-radius: 20px;\n"
                                                "font: bold;")
         self.constant_logo_label.setText("")
-        self.constant_logo_label.setPixmap(QtGui.QPixmap("assets/moex_logo.png"))
+        self.constant_logo_label.setPixmap(QtGui.QPixmap(MOEX_LOGO_PATH))
         self.constant_logo_label.setScaledContents(False)
         self.constant_logo_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.constant_logo_label.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.LinksAccessibleByMouse)

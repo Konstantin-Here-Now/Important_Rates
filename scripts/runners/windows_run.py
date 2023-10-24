@@ -1,14 +1,15 @@
 import wx
 from wx.adv import TaskBarIcon, EVT_TASKBAR_LEFT_DOWN
 
-from scripts import app_logger
+from scripts import app_logger, settings
 from scripts.rates_dataset import RatesDataset
 from scripts.window_show import show_window
 
-TRAY_TOOLTIP = 'Курсы ЦБ'
-TRAY_ICON = 'assets/cb_logo.png'
 
-logger = app_logger.get_logger('main')
+TRAY_TOOLTIP = 'Курсы ЦБ'
+TRAY_ICON = str(settings.BASE_DIR) + r'\assets\cb_logo.ico'
+
+logger = app_logger.get_logger('windows_run')
 
 
 def create_menu_item(menu, label, func):
@@ -33,7 +34,7 @@ class OurTaskBarIcon(TaskBarIcon):
         return menu
 
     def set_icon(self, path):
-        icon = wx.Icon(wx.Bitmap(path))
+        icon = wx.Icon(wx.Bitmap(path, wx.BITMAP_TYPE_ICO))
         self.SetIcon(icon, TRAY_TOOLTIP)
 
     def on_left_down(self, event):
