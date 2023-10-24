@@ -1,5 +1,5 @@
-from scripts.rates_dataset import RatesDataset
-from scripts.ui import get_ui
+from rates_dataset import RatesDataset
+from ui import get_ui
 
 
 def show_window(dataset: RatesDataset = RatesDataset()):

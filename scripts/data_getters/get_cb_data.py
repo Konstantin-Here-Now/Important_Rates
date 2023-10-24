@@ -1,6 +1,6 @@
 from datetime import date, timedelta
 
-from scripts.data_getters.get_beautiful_soup import get_soup, HttpMethod
+from .get_beautiful_soup import get_soup, HttpMethod
 
 
 async def get_key_rate() -> str:

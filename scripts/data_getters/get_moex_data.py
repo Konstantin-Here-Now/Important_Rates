@@ -1,4 +1,4 @@
-from scripts.data_getters.get_beautiful_soup import get_soup, HttpMethod
+from .get_beautiful_soup import get_soup, HttpMethod
 
 
 async def get_moex_usd() -> str:

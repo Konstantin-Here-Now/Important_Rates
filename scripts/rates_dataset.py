@@ -1,9 +1,9 @@
 import asyncio
 
-from scripts import app_logger
-from scripts.data_getters.get_cb_data import get_necessary_cb_curses, get_key_rate, get_latest_date, get_previous_date
-from scripts.data_getters.get_moex_data import get_moex_usd, get_moex_eur
-from scripts.singleton import Singleton
+import app_logger
+from data_getters.get_cb_data import get_necessary_cb_curses, get_key_rate, get_latest_date, get_previous_date
+from data_getters.get_moex_data import get_moex_usd, get_moex_eur
+from singleton import Singleton
 
 logger = app_logger.get_logger('rates_dataset')
 
