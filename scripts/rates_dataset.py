@@ -10,6 +10,7 @@ logger = app_logger.get_logger('rates_dataset')
 
 class RatesDataset(metaclass=Singleton):
     def __init__(self):
+        logger.info("Initialization of dataset...")
         self.key_rate = "NO DATA"
         self.current_cb_usd = "NO DATA"
         self.current_cb_eur = "NO DATA"
@@ -23,8 +24,10 @@ class RatesDataset(metaclass=Singleton):
         self.previous_date = "NO DATA"
 
         asyncio.run(self.update())
+        logger.info("Initialization complete.")
 
     async def update(self) -> None:
+        logger.info("Getting data updates from API...")
         try:
             coroutine_0 = self._get_cb_data_key_rate()
             coroutine_1 = self._get_cb_data_curses()
@@ -36,7 +39,6 @@ class RatesDataset(metaclass=Singleton):
 
         except Exception as ex:
             logger.error(ex)
-            self.__init__()
 
     async def _get_cb_data_key_rate(self):
         self.key_rate = await get_key_rate() + '' + '%'
@@ -61,6 +63,7 @@ class RatesDataset(metaclass=Singleton):
         self.previous_date = get_previous_date(self.latest_date)
 
     def get_ui_packed_data(self) -> dict[str, str]:
+        logger.info("Preparing data for UI...")
         ui_data = {
             'key_rate': self.key_rate,
             'previous_date': self.previous_date,

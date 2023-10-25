@@ -3,8 +3,8 @@ from sys import argv
 
 from PyQt6 import QtWidgets
 
-from scripts import app_logger
 from assets import cb_ui
+from scripts import app_logger
 from scripts.rates_dataset import RatesDataset
 
 logger = app_logger.get_logger('ui')

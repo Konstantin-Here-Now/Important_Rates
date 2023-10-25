@@ -1,13 +1,13 @@
 import logging
-from datetime import date
 import os
+from datetime import date
 
 from settings import BASE_DIR
 
-_log_format = f"[%(asctime)s] - %(name)s - [%(levelname)s] : %(message)s"
-
 
 def get_logger(name):
+    _log_format = f"[%(asctime)s] - [%(levelname)s] - %(name)s : %(message)s"
+
     if not os.path.isdir(BASE_DIR + "/logs"):
         os.mkdir(BASE_DIR + "/logs")
 

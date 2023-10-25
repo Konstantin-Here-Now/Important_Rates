@@ -1,9 +1,14 @@
 from datetime import date, timedelta
 
+from scripts import app_logger
 from .get_beautiful_soup import get_soup, HttpMethod
+
+logger = app_logger.get_logger('get_cb_data')
 
 
 async def get_key_rate() -> str:
+    logger.info("Getting Central Bank key rate...")
+
     url = "https://cbr.ru/DailyInfoWebServ/DailyInfo.asmx?op=GetCursOnDate"
     body = f"""<?xml version="1.0" encoding="utf-8"?>
     <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
@@ -24,6 +29,7 @@ async def get_key_rate() -> str:
 
 
 async def get_latest_date() -> str:
+    logger.info("Getting Central Bank latest operation date...")
     url = "https://cbr.ru/DailyInfoWebServ/DailyInfo.asmx?op=GetLatestDate"
     body = """<?xml version="1.0" encoding="utf-8"?>
     <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
@@ -48,6 +54,7 @@ def get_previous_date(iso_date: str) -> str:
 
 
 async def get_curs_on_date(iso_date: str = date.today().isoformat()) -> dict[str, dict[str, str]]:
+    logger.info(f"Getting Central Bank curses on date {iso_date}...")
     output_dict = {}
 
     url = "https://cbr.ru/DailyInfoWebServ/DailyInfo.asmx?op=GetCursOnDate"
@@ -78,6 +85,7 @@ async def get_curs_on_date(iso_date: str = date.today().isoformat()) -> dict[str
 
 # necessary_cb_curses are current_cb_usd, current_cb_eur, current_cny, previous_cb_usd, previous_cb_eur, previous_cny
 async def get_necessary_cb_curses() -> dict[str, tuple[str, str, str]]:
+    logger.info(f"Getting necessary Central Bank curses...")
     latest_date = await get_latest_date()
     previous_date = get_previous_date(latest_date)
     current_curses = await get_curs_on_date(latest_date)

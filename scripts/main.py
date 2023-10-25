@@ -6,9 +6,11 @@ logger = app_logger.get_logger('main')
 
 def main():
     if settings.PLATFORM == "Console":
+        logger.info("Running in console...")
         from runners.console_run import console_main
         console_main()
     elif settings.PLATFORM == "Windows":
+        logger.info("Running on Windows...")
         from runners.windows_run import windows_main
         windows_main()
     else:
